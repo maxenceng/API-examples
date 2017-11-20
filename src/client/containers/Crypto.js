@@ -52,22 +52,7 @@ class Crypto extends React.Component {
       )
       /* eslint-enable function-paren-newline */
     })
-    /*
-    for(const element of data) {
-      res.push(
-        <CryptoCard
-          key={element.id}
-          name={element.name}
-          symbol={element.symbol}
-          price={element.price_usd}
-          change24h={element.percent_change_24h}
-          change7d={element.percent_change_7d}
-        />
-      )
-    }
-    */
     return res
-
   }
 
   render() {
