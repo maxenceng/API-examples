@@ -3,7 +3,7 @@
 import Immutable from 'immutable'
 import type { fromJS as ImmutType } from 'immutable'
 
-import { INPUT_CHANGE } from '../actions/diabloInputAction'
+import { INPUT_CHANGE } from '../actions/battleTagAction'
 
 /**
  * Example of an initial state

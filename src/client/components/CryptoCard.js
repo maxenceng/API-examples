@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react'
+import { List } from 'semantic-ui-react'
 
 /**
  * @type {Object}
@@ -28,12 +29,11 @@ export default ({
   name, symbol, price, change24h, change7d,
 }: Props) =>
   (
-    <div>
-      <div>Name: {name}</div>
-      <div>Symbol: {symbol}</div>
-      <div>Price: {price}$</div>
-      <div>Change since last 24h: {change24h}</div>
-      <div>Change since last 7d: {change7d}</div>
-      <hr />
-    </div>
+    <List>
+      <List.Item>Name: {name}</List.Item>
+      <List.Item>Symbol: {symbol}</List.Item>
+      <List.Item>Price: {price}$</List.Item>
+      <List.Item>Change since last 24h: {change24h}</List.Item>
+      <List.Item>Change since last 7d: {change7d}</List.Item>
+    </List>
   )

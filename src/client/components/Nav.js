@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { Sidebar, Menu } from 'semantic-ui-react'
 import { ROUTES } from '../../utils/routes'
 
 /**
@@ -12,7 +13,7 @@ const routesList = (): Array<any> => {
   const res = []
   ROUTES.forEach((value, key) => {
     if (key !== 'Not Found') {
-      res.push(<li key={key}><NavLink className="navbar-item" to={value[0]}>{key}</NavLink></li>)
+      res.push(<Menu.Item key={key}><NavLink className="navbar-item" to={value[0]}>{key}</NavLink></Menu.Item>)
     }
   })
   return res
@@ -23,9 +24,7 @@ const routesList = (): Array<any> => {
  */
 export default () =>
   (
-    <nav>
-      <ul>
-        {routesList()}
-      </ul>
-    </nav>
+    <Sidebar visible as={Menu} direction="top" inverted>
+      {routesList()}
+    </Sidebar>
   )

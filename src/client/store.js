@@ -19,5 +19,5 @@ export default createStore(
   reducers,
   { test: immutable.fromJS(preloadedState.test) },
   // eslint-disable-next-line max-len
-  IS_PROD ? applyMiddleware(thunkMiddleware, promise) : applyMiddleware(thunkMiddleware, promise, logger),
+  IS_PROD ? applyMiddleware(thunkMiddleware, promise) : applyMiddleware(thunkMiddleware, promise),
 )

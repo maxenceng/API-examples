@@ -4,10 +4,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import ImmutablePropTypes from 'react-immutable-proptypes'
+import { Segment } from 'semantic-ui-react'
 
-import {
-  fetchCrypto,
-} from '../actions/cryptoAction'
+import { fetchCrypto } from '../actions/cryptoAction'
 import { initialState } from '../reducers/cryptoReducer'
 
 import CryptoCard from '../components/CryptoCard'
@@ -41,14 +40,15 @@ class Crypto extends React.Component {
     data.forEach((value, key) => {
       /* eslint-disable function-paren-newline */
       res.push(
-        <CryptoCard
-          key={key}
-          name={value.get('name')}
-          symbol={value.get('symbol')}
-          price={value.get('price_usd')}
-          change24h={value.get('percent_change_24h')}
-          change7d={value.get('percent_change_7d')}
-        />,
+        <Segment raised key={key}>
+          <CryptoCard
+            name={value.get('name')}
+            symbol={value.get('symbol')}
+            price={value.get('price_usd')}
+            change24h={value.get('percent_change_24h')}
+            change7d={value.get('percent_change_7d')}
+          />
+        </Segment>,
       )
       /* eslint-enable function-paren-newline */
     })

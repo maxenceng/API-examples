@@ -3,6 +3,7 @@
 import React from 'react'
 import { Switch } from 'react-router'
 import { Route } from 'react-router-dom'
+import { Sidebar, Segment } from 'semantic-ui-react'
 
 import { ROUTES } from '../utils/routes'
 import Nav from './components/Nav'
@@ -31,10 +32,12 @@ const createRoutes = (routes: Map<string, Array<any>>): Array<any> => {
  */
 export default () =>
   (
-    <div>
+    <Sidebar.Pushable as={Segment}>
       <Nav />
-      <Switch>
-        {createRoutes(ROUTES)}
-      </Switch>
-    </div>
+      <Sidebar.Pusher>
+        <Switch>
+          {createRoutes(ROUTES)}
+        </Switch>
+      </Sidebar.Pusher>
+    </Sidebar.Pushable>
   )
