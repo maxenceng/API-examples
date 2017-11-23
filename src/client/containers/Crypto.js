@@ -1,7 +1,6 @@
 // @flow
 
 import React from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 import { Segment } from 'semantic-ui-react'
@@ -18,9 +17,15 @@ const mapStateToProps = state => ({
   crypto: state.crypto,
 })
 
-class Crypto extends React.Component {
+type Props = {
+  fetchCrypto: Function,
+  // eslint-disable-next-line react/no-typos
+  crypto: ImmutablePropTypes.map,
+}
+
+class Crypto extends React.Component<Props> {
   componentDidMount() {
-    if (this.props.crypto === initialState) {
+    if (this.props.crypto.equals(initialState)) {
       this.props.fetchCrypto()
     }
   }
@@ -32,7 +37,7 @@ class Crypto extends React.Component {
     }
 
     if (crypto.get('hasError')) {
-      return <p>{crypto.errorMessage}</p>
+      return <p>{crypto.get('errorMessage')}</p>
     }
 
     const data = crypto.get('data')
@@ -58,16 +63,6 @@ class Crypto extends React.Component {
   render() {
     return <div>{this.renderData()}</div>
   }
-}
-
-Crypto.propTypes = {
-  fetchCrypto: PropTypes.func.isRequired,
-  // eslint-disable-next-line react/no-typos
-  crypto: ImmutablePropTypes.map,
-}
-
-Crypto.defaultProps = {
-  crypto: initialState,
 }
 
 export default connect(mapStateToProps, { fetchCrypto })(Crypto)

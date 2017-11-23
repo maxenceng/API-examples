@@ -15,7 +15,7 @@ export const fetchingSuccess = createAction(FETCHING_DIABLO_DATA_SUCCESS)
 export const fetchingError = createAction(FETCHING_DIABLO_DATA_ERROR)
 
 export function fetchDiablo(profile: string) {
-  return (dispatch) => {
+  return (dispatch: Function) => {
     dispatch(fetchingData())
     return axios.get(`${DIABLO_URL}${profile}/?locale=en_GB&apikey=${BLIZZARD_API}`)
       .then((res: Object) => {

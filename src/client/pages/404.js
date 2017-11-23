@@ -1,6 +1,8 @@
 // @flow
 
 import React from 'react'
+import { Header } from 'semantic-ui-react'
+
 import DynamicHelmet from '../components/DynamicHelmet'
 
 /**
@@ -14,6 +16,6 @@ export default () =>
         description="React Koa Boilerplate 404 Page Not Found"
         keywords="React Koa Boilerplate SSR Redux"
       />
-      <p>404 Not Found!</p>
+      <Header as="h1">404 Not Found!</Header>
     </div>
   )

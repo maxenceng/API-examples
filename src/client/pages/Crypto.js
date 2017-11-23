@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react'
+import { Header } from 'semantic-ui-react'
 
 import Crypto from '../containers/Crypto'
 import DynamicHelmet from '../components/DynamicHelmet'
@@ -16,7 +17,7 @@ export default () =>
         description="Displays data from an external API about cryptocurrencies"
         keywords="Cryptocurrencies example API"
       />
-      <h1>Cryptocurrencies</h1>
+      <Header as="h1">Cryptocurrencies</Header>
       <Crypto />
     </div>
   )

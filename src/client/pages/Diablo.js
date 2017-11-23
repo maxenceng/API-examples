@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react'
+import { Header } from 'semantic-ui-react'
 
 import Diablo from '../containers/Diablo'
 import DynamicHelmet from '../components/DynamicHelmet'
@@ -16,7 +17,7 @@ export default () =>
         description="Displays data from an external API about Diablo 3"
         keywords="Blizzard Diablo example API"
       />
-      <h1>Diablo 3 profile</h1>
+      <Header as="h1">Diablo 3 profile</Header>
       <Diablo />
     </div>
   )

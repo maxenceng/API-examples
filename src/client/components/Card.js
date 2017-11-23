@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Image } from 'semantic-ui-react'
 
 /**
  * @type {Object}
@@ -30,7 +30,7 @@ export default ({
 }: Props) =>
   (
     <Card>
-      <Image src={image} />
+      <Image src={image} height={256} width={256} />
       <Card.Content>
         <Card.Header>{header}</Card.Header>
         <Card.Meta>{meta}</Card.Meta>

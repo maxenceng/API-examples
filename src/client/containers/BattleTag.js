@@ -1,16 +1,20 @@
 // @flow
 
 import React from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import Input from '../components/Input'
 
 import { updateInput } from '../actions/battleTagAction'
 
-class battleTag extends React.Component {
+type Props = {
+  updateInput: Function,
+}
+
+class battleTag extends React.Component<Props> {
   constructor(props) {
     super(props)
+    // flow-disable-next-line
     this.handleChange = this.handleChange.bind(this)
   }
 
@@ -21,13 +25,6 @@ class battleTag extends React.Component {
   render() {
     return <Input onchange={this.handleChange} />
   }
-}
-
-battleTag.propTypes = {
-  updateInput: PropTypes.func.isRequired,
-}
-
-battleTag.defaultProps = {
 }
 
 export default connect(null, { updateInput })(battleTag)

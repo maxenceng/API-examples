@@ -3,7 +3,7 @@
 import React from 'react'
 import { Switch } from 'react-router'
 import { Route } from 'react-router-dom'
-import { Sidebar, Segment } from 'semantic-ui-react'
+import { Sidebar, Segment, Container } from 'semantic-ui-react'
 
 import { ROUTES } from '../utils/routes'
 import Nav from './components/Nav'
@@ -35,9 +35,11 @@ export default () =>
     <Sidebar.Pushable as={Segment}>
       <Nav />
       <Sidebar.Pusher>
-        <Switch>
-          {createRoutes(ROUTES)}
-        </Switch>
+        <Container>
+          <Switch>
+            {createRoutes(ROUTES)}
+          </Switch>
+        </Container>
       </Sidebar.Pusher>
     </Sidebar.Pushable>
   )

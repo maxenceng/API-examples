@@ -1,9 +1,8 @@
 // @flow
 
 import React from 'react'
+import { Header } from 'semantic-ui-react'
 
-import Message from '../containers/Message'
-import Button from '../containers/Button'
 import DynamicHelmet from '../components/DynamicHelmet'
 
 /**
@@ -13,12 +12,18 @@ export default () =>
   (
     <div>
       <DynamicHelmet
-        title="Home - React Koa Boilerplate"
-        description="React Koa Boilerplate Home Page"
-        keywords="React Koa Boilerplate SSR Redux"
+        title="Home - Maxenceng's examples"
+        description="Presents the website"
+        keywords="Home API examples ReactJS Redux"
       />
-      <h1>Home</h1>
-      <Message />
-      <Button />
+      <Header as="h1">Home</Header>
+      <div>
+        <p>Welcome to my API examples</p>
+        <p>This page uses the boilerplate that I will use in my next projects</p>
+        <p>
+          This is just a sample of what I can do, mostly demonstrating the use
+          of ReactJS with Redux to call external APIs
+        </p>
+      </div>
     </div>
   )

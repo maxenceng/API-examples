@@ -17,7 +17,12 @@ const preloadedState = window.__PRELOADED_STATE__
  */
 export default createStore(
   reducers,
-  { test: immutable.fromJS(preloadedState.test) },
+  {
+    battleTag: immutable.fromJS(preloadedState.battleTag),
+    crypto: immutable.fromJS(preloadedState.crypto),
+    diablo: immutable.fromJS(preloadedState.diablo),
+    weather: immutable.fromJS(preloadedState.weather),
+  },
   // eslint-disable-next-line max-len
-  IS_PROD ? applyMiddleware(thunkMiddleware, promise) : applyMiddleware(thunkMiddleware, promise),
+  IS_PROD ? applyMiddleware(thunkMiddleware, promise) : applyMiddleware(thunkMiddleware, promise, logger),
 )

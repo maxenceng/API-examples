@@ -14,7 +14,7 @@ export const fetchingSuccess = createAction(FETCHING_COIN_DATA_SUCCESS)
 export const fetchingError = createAction(FETCHING_COIN_DATA_ERROR)
 
 export function fetchCrypto() {
-  return (dispatch) => {
+  return (dispatch: Function) => {
     dispatch(fetchingData())
     return axios.get(`${CRYPTO_API_URL}/v1/ticker/?limit=10`)
       .then((res: Object) => {

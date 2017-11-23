@@ -1,17 +1,14 @@
 // @flow
 
 import React from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import ImmutablePropTypes from 'react-immutable-proptypes'
-import { Card } from 'semantic-ui-react'
+import { Card, Header } from 'semantic-ui-react'
 
 import Button from '../components/Button'
 import BattleTag from '../containers/BattleTag'
 import DiabloCard from '../components/Card'
 import { fetchDiablo } from '../actions/diabloAction'
-import { initialState } from '../reducers/diabloReducer'
-import { initialState as initialStateBT } from '../reducers/battleTagReducer'
 
 /**
  * Maps the text when triggered, here it is on first load
@@ -21,13 +18,25 @@ const mapStateToProps = state => ({
   battleTag: state.battleTag,
 })
 
-class Diablo extends React.Component {
+type Props = {
+  fetchDiablo: Function,
+  /* eslint-disable react/no-typos */
+  diablo: ImmutablePropTypes.map,
+  battleTag: ImmutablePropTypes.map,
+  /* eslint-enable react/no-typos */
+}
+
+class Diablo extends React.Component<Props> {
   constructor(props) {
     super(props)
+    this.clicked = false
+    // flow-disable-next-line
     this.handleClick = this.handleClick.bind(this)
   }
+  clicked: boolean
 
   handleClick() {
+    this.clicked = true
     const battleTag = encodeURIComponent(this.props.battleTag.get('battleTag'))
     this.props.fetchDiablo(battleTag)
   }
@@ -53,15 +62,26 @@ class Diablo extends React.Component {
 
     const heroes = data.get('heroes')
     const res = []
+    if (!this.clicked) {
+      return <p />
+    }
     if (heroes === undefined) {
       return <p>No heroes</p>
     }
     heroes.forEach((value, key) => {
+      let imgClass = value.get('class').replace('-', '')
+      if (imgClass === 'necromancer') {
+        imgClass = 'p6_necro'
+      }
+      if (imgClass === 'crusader') {
+        imgClass = 'x1_crusader'
+      }
+      const gender = value.get('gender') ? 'female' : 'male'
       /* eslint-disable function-paren-newline */
       res.push(
         <DiabloCard
           key={key}
-          image="https://www.placecage.com/512/512"
+          image={`https://blzmedia-a.akamaihd.net/d3/icons/portraits/42/${imgClass}_${gender}.png`}
           header={value.get('name')}
           meta={`Level ${value.get('level')}`}
           description={`Elite kills: ${value.get('kills').get('elites')}`}
@@ -73,7 +93,7 @@ class Diablo extends React.Component {
 
     return (
       <div>
-        <div>Paragon: {data.get('paragonLevel')}</div>
+        <div><Header as="h2">Paragon: {data.get('paragonLevel')}</Header></div>
         <Card.Group>
           {res}
         </Card.Group>
@@ -92,19 +112,6 @@ class Diablo extends React.Component {
       </div>
     )
   }
-}
-
-Diablo.propTypes = {
-  fetchDiablo: PropTypes.func.isRequired,
-  /* eslint-disable react/no-typos */
-  diablo: ImmutablePropTypes.map,
-  battleTag: ImmutablePropTypes.map,
-  /* eslint-enable react/no-typos */
-}
-
-Diablo.defaultProps = {
-  diablo: initialState,
-  battleTag: initialStateBT,
 }
 
 export default connect(mapStateToProps, { fetchDiablo })(Diablo)
